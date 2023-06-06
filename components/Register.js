@@ -21,6 +21,8 @@ export default function Page2({ navigation }) {
   const [villeDesiree, setVilleDesiree] = useState("");
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [backLoginModal, sebackLoginModal] = useState(false);
+
   const handleSignUp = async () => {
     if (
       email === "" ||
@@ -65,7 +67,11 @@ export default function Page2({ navigation }) {
       if (response.ok) {
         const data = await response.json();
         console.log("Professor added successfully:", data);
-        navigation.navigate("Login");
+        sebackLoginModal(true);
+
+
+
+
       } else {
         const error = await response.json();
         console.error("Failed to add professor:", error.message);
@@ -78,10 +84,11 @@ export default function Page2({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.text_bold}>Inscription</Text>
+      <Text> Fill in the form with your information</Text>
       <View style={styles.scrollView}>
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <TextInput
-            placeholder="Email d'utilisateur"
+            placeholder="Email"
             value={email}
             onChangeText={setEmail}
             style={styles.input}
@@ -138,7 +145,7 @@ export default function Page2({ navigation }) {
           />
 
           <TextInput
-            placeholder="Ville de la faculté actuelle"
+            placeholder="Faculté actuelle"
             value={villeFaculteActuelle}
             onChangeText={setVilleFaculteActuelle}
             style={styles.input}
@@ -175,6 +182,25 @@ export default function Page2({ navigation }) {
                 style={styles.modalButton}
               >
                 <Text style={styles.modalButtonText}>OK</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
+
+        <Modal
+          visible={backLoginModal}
+          animationType="slide"
+          transparent={true}
+          onRequestClose={() => setShowSuccessModal(false)}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.modalContent}>
+              <Text style={styles.modalText}>Account created succesfully</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Login")}
+                style={styles.modalButton}
+              >
+                <Text style={styles.modalButtonText}>Go back to login</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -250,7 +276,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   modalButton: {
-    backgroundColor: "#446688",
+    backgroundColor: "green",
     borderRadius: 25,
     paddingVertical: 12,
     paddingHorizontal: 20,

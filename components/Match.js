@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, FlatList } from 'react-native';
+import { StyleSheet, View, Text, FlatList, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 
@@ -42,11 +42,15 @@ const Match = () => {
           </Text>
         </View>
         <View style={styles.column}>
-          {correspondingProfessors.map(professor => (
-            <Text style={styles.correspondingProfessorName} key={professor._id}>
-              {professor.nom} ({professor.villeFaculteActuelle} - {professor.villeDesiree})
-            </Text>
-          ))}
+          {correspondingProfessors.length > 0 ? (
+            correspondingProfessors.map(professor => (
+              <Text style={styles.correspondingProfessorName} key={professor._id}>
+                {professor.nom} ({professor.villeFaculteActuelle} - {professor.villeDesiree})
+              </Text>
+            ))
+          ) : (
+            <Text style={styles.noProfessor}>Aucun</Text>
+          )}
         </View>
       </View>
     );
@@ -54,10 +58,10 @@ const Match = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Nombre de profs inscrits: {professors.length}</Text>
+      <Text style={styles.title}>Choisir la spécialité</Text>
 
       <Picker
-        style={styles.dropdown}
+        style={styles.picker}
         selectedValue={speciality}
         onValueChange={(itemValue) => setSpeciality(itemValue)}
       >
@@ -68,13 +72,13 @@ const Match = () => {
       </Picker>
 
       {filteredProfessors.length > 0 && (
-        <View style={styles.tableContainer}>
+        <ScrollView contentContainerStyle={styles.tableContainer}>
           <View style={styles.tableHeader}>
             <View style={styles.column}>
-              <Text style={styles.columnHeader}>Professor</Text>
+              <Text style={styles.columnHeader}>Professeur</Text>
             </View>
             <View style={styles.column}>
-              <Text style={styles.columnHeader}>Corresponding Professors</Text>
+              <Text style={styles.columnHeader}>Permutation possible</Text>
             </View>
           </View>
           <FlatList
@@ -82,7 +86,7 @@ const Match = () => {
             renderItem={renderProfessorItem}
             keyExtractor={(item) => item._id}
           />
-        </View>
+        </ScrollView>
       )}
     </View>
   );
@@ -92,6 +96,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
+    backgroundColor: '#C1E9FF',
+
   },
   title: {
     fontSize: 18,
@@ -102,7 +108,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   tableContainer: {
-    marginTop: 20,
+    flexGrow: 1,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 8,
@@ -111,6 +117,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderBottomWidth: 1,
     borderColor: '#ccc',
+    backgroundColor: '#67A9CD',
+
     paddingVertical: 8,
     paddingHorizontal: 16,
   },
@@ -124,6 +132,8 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderBottomWidth: 1,
     borderColor: '#ccc',
+    backgroundColor:'#FFFFFF'
+    
   },
   column: {
     flex: 1,
@@ -133,6 +143,17 @@ const styles = StyleSheet.create({
   },
   correspondingProfessorName: {
     marginLeft: 10,
+  },
+  noProfessor: {
+    fontStyle: 'italic',
+    color: '#999',
+    marginLeft:30
+  },
+
+  picker: {
+
+    backgroundColor: '#FFFFFF',
+    marginBottom:20
   },
 });
 

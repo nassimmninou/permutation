@@ -170,6 +170,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 20,
+    backgroundColor: '#C1E9FF',
+
   },
   chartTitle: {
     fontSize: 18,

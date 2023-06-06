@@ -60,13 +60,13 @@ export default function Drawer() {
       />
 
 <DrawerNav.Screen
-        name="Combine"
+        name="Combinaisons"
         component={Match}
         initialParams={{ professor: professor }}
       />
 
       <DrawerNav.Screen
-        name="Logout"
+        name="se Deconnecter"
         style={styles.logout}
         component={Logout}
         options={{

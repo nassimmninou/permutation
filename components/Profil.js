@@ -167,7 +167,7 @@ export default function Profil({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: '#C1E9FF',
     alignItems: "center",
     justifyContent: "center",
   },
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   button: {
-    backgroundColor: "#000",
+    backgroundColor: "red",
     borderRadius: 25,
     paddingVertical: 12,
     paddingHorizontal: 20,
