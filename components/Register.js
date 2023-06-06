@@ -44,7 +44,7 @@ export default function Page2({ navigation }) {
     }
     try {
       const response = await fetch(
-        "https://troubled-red-garb.cyclic.app/professeurs",
+        "https://tiny-worm-nightgown.cyclic.app/professeurs",
         {
           method: "POST",
           headers: {

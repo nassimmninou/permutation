@@ -51,7 +51,7 @@ export default function Profil({ navigation }) {
     try {
       // Send a DELETE request to delete the professor from the server
       await axios.delete(
-        `https://troubled-red-garb.cyclic.app/professeurs/${email}`
+        `https://tiny-worm-nightgown.cyclic.app/professeurs/${email}`
       );
 
       // The professor has been successfully deleted

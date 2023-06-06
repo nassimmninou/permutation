@@ -14,7 +14,7 @@ export default function Page1({ navigation }) {
   const [password, setPassword] = useState("");
   const [showModal, setShowModal] = useState(false);
   const handleLogin = () => {
-    fetch("https://troubled-red-garb.cyclic.app/professeurs", {
+    fetch("https://tiny-worm-nightgown.cyclic.app/professeurs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export default function Page1({ navigation }) {
       .then((response) => response.json())
       .then((data) => {
         if (data.message === "Authentication successful") {
-          fetch("https://troubled-red-garb.cyclic.app/professeurs")
+          fetch("https://tiny-worm-nightgown.cyclic.app/professeurs")
             .then((response) => response.json())
             .then((professeursData) => {
               const professor = professeursData.find(

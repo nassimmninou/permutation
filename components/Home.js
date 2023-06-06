@@ -10,7 +10,7 @@ const Home = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('https://troubled-red-garb.cyclic.app/professeurs');
+      const response = await axios.get('https://tiny-worm-nightgown.cyclic.app/professeurs');
       const professors = response.data;
 
       const specialtyCount = {};

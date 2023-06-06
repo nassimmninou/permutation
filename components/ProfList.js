@@ -12,7 +12,7 @@ const ProfList = () => {
   const [selectedProfessor, setSelectedProfessor] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const baseUrl = 'https://troubled-red-garb.cyclic.app/professeurs';
+  const baseUrl = 'https://tiny-worm-nightgown.cyclic.app/professeurs';
 
   useEffect(() => {
     axios
